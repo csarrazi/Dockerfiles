@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-EXPOSE 3389
+EXPOSE 389
 
 VOLUME ["/etc/slapd/"]
 
@@ -14,4 +14,4 @@ COPY slapd.conf /etc/ldap/slapd.conf
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["slapd", "-f", "/etc/ldap/slapd.conf", "-h", "ldap://0.0.0.0:3389/", "-d", "-1"]
+CMD ["slapd", "-f", "/etc/ldap/slapd.conf", "-h", "ldap://0.0.0.0:389/", "-d", "-1"]
