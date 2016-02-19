@@ -7,10 +7,11 @@ VOLUME ["/etc/slapd/"]
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y ldap-utils slapd
 
-RUN mkdir /tmp/slapd
+RUN mkdir /init-ldap.d
+RUN mkdir -p /var/db/openldap
 
-COPY entrypoint.sh /
 COPY slapd.conf /etc/ldap/slapd.conf
+COPY entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]
 
